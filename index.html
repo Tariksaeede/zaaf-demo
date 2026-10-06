@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17130f" />
+  <meta name="description" content="Mevsimle değişen tabaklar, uzun akşamlar ve Şef Aras Çetin’in mutfak dili. Zaaf İstanbul · Levazım." />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Zaaf İstanbul" />
+  <meta property="og:title" content="Zaaf İstanbul — Contemporary Dining" />
+  <meta property="og:description" content="Mevsimle değişen tabaklar. Uzayan akşamlar. Kendine ait bir mutfak dili." />
+  <meta property="og:url" content="https://zaaf-demo-v2.vercel.app/" />
+  <meta property="og:image" content="https://zaaf-demo-v2.vercel.app/assets/og-zaaf.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zaaf İstanbul — Contemporary Dining" />
+  <meta name="twitter:description" content="Mevsimle değişen tabaklar. Uzayan akşamlar. Kendine ait bir mutfak dili." />
+  <meta name="twitter:image" content="https://zaaf-demo-v2.vercel.app/assets/og-zaaf.jpg" />
+  <title>Zaaf İstanbul — Contemporary Dining</title>
+  <link rel="icon" href="assets/zaaf-mark.png" />
+  <link rel="preload" as="image" href="assets/dining.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#19140f;
+      --ink-2:#2b211a;
+      --cream:#eee6d8;
+      --paper:#f6f0e7;
+      --muted:#ad9f8f;
+      --line:rgba(238,230,216,.22);
+      --accent:#c88a62;
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --sans:"Manrope", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--ink)}
+    body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;letter-spacing:.01em;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    .noise{pointer-events:none;position:fixed;inset:0;z-index:99;opacity:.035;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+
+    .nav{position:fixed;left:0;right:0;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:26px 44px;border-bottom:1px solid rgba(255,255,255,.13);transition:background .35s ease,padding .35s ease,border-color .35s ease,box-shadow .35s ease}
+    .nav.scrolled{background:rgba(17,13,10,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding-top:17px;padding-bottom:17px;border-color:rgba(255,255,255,.08);box-shadow:0 8px 30px rgba(0,0,0,.12)}
+    .wordmark{width:76px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:.95}
+    .navlinks{display:flex;gap:28px;align-items:center;font-size:11px;text-transform:uppercase;letter-spacing:.16em}
+    .navlinks a{opacity:.78;transition:opacity .25s}
+    .navlinks a:hover{opacity:1}
+    .reserve-link{border:1px solid rgba(255,255,255,.45);padding:12px 18px;border-radius:999px;opacity:1!important}
+    .nav-right{display:flex;gap:16px;align-items:center}
+    .lang{background:none;border:0;color:var(--cream);cursor:pointer;text-transform:uppercase;font-size:10px;letter-spacing:.16em;opacity:.72;padding:8px}
+    .lang.active{opacity:1}
+    .menu-toggle{display:none;border:0;background:none;color:#fff;width:42px;height:42px;position:relative}
+    .menu-toggle span{position:absolute;width:20px;height:1px;background:#fff;left:11px;transition:.25s}
+    .menu-toggle span:first-child{top:16px}.menu-toggle span:last-child{top:25px}
+
+    .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:150px 44px 54px;overflow:hidden;background:#100d0a}
+    .hero-media{position:absolute;inset:0}
+    .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:saturate(.8) contrast(1.05) brightness(.7);transform:scale(1.02)}
+    .hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,7,6,.24) 0%,rgba(9,7,6,.1) 36%,rgba(9,7,6,.88) 100%),linear-gradient(90deg,rgba(8,6,5,.58),rgba(8,6,5,.04) 58%)}
+    .hero-content{position:relative;z-index:3;width:min(860px,94vw)}
+    .eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;text-transform:uppercase;letter-spacing:.26em;color:#e5d9c8;margin-bottom:22px}
+    .eyebrow:before{content:"";width:36px;height:1px;background:currentColor;opacity:.7}
+    h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,160px);line-height:.72;letter-spacing:-.045em;margin:0 0 30px;color:#f4eee5}
+    .hero-copy{display:flex;align-items:flex-end;justify-content:space-between;gap:36px}
+    .hero-copy p{font-family:var(--serif);font-size:clamp(24px,3vw,40px);line-height:1.05;max-width:640px;margin:0;color:#f3eadc}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 19px;border-radius:999px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;transition:.25s}
+    .btn-primary{background:var(--cream);color:var(--ink);border:1px solid var(--cream)}
+    .btn-primary:hover{background:white;border-color:white}
+    .btn-ghost{border:1px solid rgba(255,255,255,.4);color:white;background:rgba(20,15,12,.13);backdrop-filter:blur(10px)}
+    .btn-ghost:hover{background:rgba(255,255,255,.1)}
+    .scroll-mark{position:absolute;right:44px;bottom:54px;z-index:4;font-size:9px;text-transform:uppercase;letter-spacing:.24em;writing-mode:vertical-rl;opacity:.62}
+
+    .section{padding:120px 44px}
+    .section-light{background:var(--paper);color:var(--ink)}
+    .section-dark{background:var(--ink);color:var(--cream)}
+    .section-brown{background:#2a1e17;color:#f0e7db}
+    .section-head{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;margin-bottom:72px}
+    .kicker{font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--muted)}
+    .display{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.2vw,92px);line-height:.9;letter-spacing:-.035em;margin:0}
+    .lead{font-family:var(--serif);font-size:clamp(24px,3vw,40px);line-height:1.08;margin:0;max-width:720px}
+    .bodycopy{font-size:14px;line-height:1.9;max-width:620px;color:#6f6256;margin-top:26px}
+
+    .story-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:20px;align-items:stretch}
+    .story-photo{position:relative;min-height:690px;overflow:hidden;background:#c8b9a5}
+    .story-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:saturate(.9);transform:scale(1.115);transform-origin:left center}
+    .story-text{display:flex;flex-direction:column;justify-content:space-between;background:#e8dfd2;padding:54px}
+    .story-text .num{font-family:var(--serif);font-size:18px;color:#806f5f}
+    .story-text h3{font-family:var(--serif);font-size:clamp(40px,5vw,70px);line-height:.92;font-weight:400;margin:40px 0 22px}
+    .story-text p{font-size:14px;line-height:1.8;color:#6a5c50;max-width:510px}
+    .story-bottom{display:flex;justify-content:space-between;gap:28px;padding-top:38px;border-top:1px solid rgba(25,20,15,.2);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#77695d}
+
+    .menu-intro{display:grid;grid-template-columns:1fr .95fr;gap:80px;align-items:end;margin-bottom:70px}
+    .menu-note{font-family:var(--serif);font-size:30px;line-height:1.15;color:#d9ccbc;max-width:560px;margin:0 0 5px}
+    .menu-list{border-top:1px solid var(--line)}
+    .menu-row{display:grid;grid-template-columns:70px 1fr minmax(220px, .7fr);gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);transition:background .25s,padding .25s}
+    .menu-row:hover{padding-left:12px;background:rgba(255,255,255,.025)}
+    .menu-row .idx{font-family:var(--serif);font-style:italic;color:#8e7b6b}
+    .menu-row h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,44px);margin:0;line-height:1}
+    .menu-row p{font-size:12px;line-height:1.6;color:#a99b8c;margin:0}
+    .menu-footer{display:flex;justify-content:space-between;gap:24px;margin-top:28px;color:#978779;font-size:11px;letter-spacing:.04em}
+
+    .image-band{position:relative;min-height:78svh;overflow:hidden;display:flex;align-items:flex-end;padding:48px}
+    .image-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.9);transform:scale(1.115);transform-origin:left center}
+    .image-band:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(9,7,6,.75))}
+    .band-copy{position:relative;z-index:2;display:flex;width:100%;justify-content:space-between;align-items:flex-end;gap:30px}
+    .band-copy h2{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,100px);line-height:.88;max-width:780px;margin:0}
+    .band-copy p{max-width:380px;font-size:13px;line-height:1.7;color:#ded2c4;margin:0 0 8px}
+
+    .chef-grid{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);gap:70px;align-items:center}
+    .chef-photo{position:relative;aspect-ratio:3/4;overflow:hidden;background:#1a1410}
+    .chef-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.03);transform:scale(1.115);transform-origin:left center}
+    .chef-copy .signature{font-family:var(--serif);font-style:italic;font-size:22px;color:#a78d78;margin-bottom:20px}
+    .chef-copy h2{font-family:var(--serif);font-weight:400;font-size:clamp(50px,6vw,86px);line-height:.9;margin:0 0 34px}
+    .chef-copy p{font-size:14px;line-height:1.9;color:#77695d;max-width:650px}
+    .chef-meta{margin-top:42px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;border-top:1px solid rgba(25,20,15,.18);padding-top:25px}
+    .chef-meta strong{display:block;font-family:var(--serif);font-size:29px;font-weight:400;margin-bottom:6px}
+    .chef-meta span{font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:#867668}
+
+    .gallery-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+    .gallery-head p{max-width:440px;color:#9f9183;font-size:13px;line-height:1.7}
+    .gallery{display:grid;grid-template-columns:1.15fr .85fr 1fr;grid-auto-rows:320px;gap:10px}
+    .gallery figure{margin:0;overflow:hidden;position:relative;background:#2f251e}
+    .gallery figure:nth-child(1){grid-row:span 2}
+    .gallery figure:nth-child(4){grid-column:span 2}
+    .gallery img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transform:scale(1.115);transform-origin:left center;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+    .gallery figure:hover img{transform:scale(1.14);filter:saturate(1)}
+
+    .visit{display:grid;grid-template-columns:1fr 1fr;min-height:740px}
+    .visit-copy{padding:90px 60px;display:flex;flex-direction:column;justify-content:space-between}
+    .visit-copy h2{font-family:var(--serif);font-size:clamp(54px,7vw,96px);line-height:.88;font-weight:400;margin:0}
+    .visit-details{display:grid;gap:30px;margin-top:60px}
+    .detail-label{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:#9c8878;margin-bottom:8px}
+    .detail-value{font-family:var(--serif);font-size:25px;line-height:1.18}
+    .visit-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:38px}
+    .visit-image{position:relative;overflow:hidden}
+    .visit-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) brightness(.8);transform:scale(1.115);transform-origin:left center}
+    .visit-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(42,30,23,.4),transparent 40%)}
+
+    .footer{padding:36px 44px 90px;background:#100d0a;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;gap:30px;align-items:flex-end}
+    .footer-left{display:flex;align-items:center;gap:22px}
+    .footer-mark{width:56px;filter:brightness(0) invert(1);opacity:.75}
+    .footer small{font-size:9px;line-height:1.6;color:#796f65;max-width:560px}
+    .social{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:#b8aa9b}
+
+    .mobile-reserve{display:none}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width: 980px){
+      .nav{padding:18px 18px}
+      .navlinks{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(18,14,11,.97);backdrop-filter:blur(16px);padding:24px 22px 30px;flex-direction:column;align-items:flex-start;border-top:1px solid rgba(255,255,255,.1)}
+      .navlinks.open{display:flex}
+      .menu-toggle{display:block;margin-left:2px}
+      .nav-right{gap:3px}
+      .nav-right .lang{display:inline-flex;padding:7px 5px;font-size:9px}
+      .hero{padding:140px 22px 34px;min-height:92svh}
+      .hero-copy{display:block}
+      .hero-actions{justify-content:flex-start;margin-top:28px}
+      .scroll-mark{display:none}
+      .section{padding:90px 22px}
+      .section-head,.menu-intro,.chef-grid,.visit{grid-template-columns:1fr}
+      .section-head,.menu-intro{gap:28px}
+      .story-grid{grid-template-columns:1fr}
+      .story-photo{min-height:520px}
+      .story-text{padding:34px}
+      .chef-photo{max-height:660px}
+      .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:290px}
+      .gallery figure:nth-child(1){grid-row:span 1}
+      .gallery figure:nth-child(4){grid-column:span 1}
+      .visit{min-height:auto}
+      .visit-copy{padding:70px 28px}
+      .visit-image{min-height:520px}
+      .footer{padding:30px 22px 98px;align-items:flex-start;flex-direction:column}
+      .mobile-reserve{display:flex;position:fixed;bottom:16px;left:16px;right:16px;z-index:45;background:rgba(239,231,218,.95);color:#1a1511;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(12px);border-radius:999px;height:54px;align-items:center;justify-content:center;text-transform:uppercase;font-size:10px;letter-spacing:.16em;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    }
+    @media (max-width: 620px){
+      h1{font-size:76px}
+      .hero-copy p{font-size:29px}
+      .btn{min-height:46px;padding:0 15px;font-size:10px}
+      .section{padding:76px 18px}
+      .story-photo{min-height:430px}
+      .story-text{padding:28px 22px}
+      .story-bottom{flex-direction:column}
+      .menu-row{grid-template-columns:42px 1fr;gap:12px}
+      .menu-row p{grid-column:2}
+      .menu-footer{display:block;line-height:1.7}
+      .image-band{min-height:70svh;padding:30px 20px}
+      .band-copy{display:block}
+      .band-copy p{margin-top:26px}
+      .chef-meta{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr;grid-auto-rows:360px}
+      .gallery-head{display:block}
+      .gallery-head p{margin-top:22px}
+      .visit-copy{padding:64px 22px}
+      .visit-image{min-height:420px}
+    }
+    @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important;transition:none!important}.gallery img{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" aria-label="Zaaf ana sayfa"><img class="wordmark" src="assets/zaaf-mark.png" alt="Zaaf"></a>
+    <nav class="navlinks" id="navLinks">
+      <a href="#hikaye" data-tr="Hikâye" data-en="Story">Hikâye</a>
+      <a href="#menu" data-tr="Menü" data-en="Menu">Menü</a>
+      <a href="#sef" data-tr="Şef" data-en="Chef">Şef</a>
+      <a href="#mekan" data-tr="Mekân" data-en="Space">Mekân</a>
+      <a class="reserve-link" href="tel:+905321732848" data-tr="Rezervasyon" data-en="Reserve">Rezervasyon</a>
+    </nav>
+    <div class="nav-right">
+      <button class="lang active" data-lang="tr" type="button" aria-pressed="true" aria-label="Türkçe">TR</button>
+      <button class="lang" data-lang="en" type="button" aria-pressed="false" aria-label="English">EN</button>
+      <button class="menu-toggle" type="button" id="menuToggle" aria-label="Menüyü aç" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media"><img src="assets/dining.jpg" alt="Zaaf İstanbul masa düzeni" fetchpriority="high" decoding="async"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow" data-tr="İstanbul · Levazım" data-en="Istanbul · Levazım">İstanbul · Levazım</div>
+        <h1>zaaf</h1>
+        <div class="hero-copy">
+          <p data-tr="Mevsimle değişen tabaklar. Uzayan akşamlar. Kendine ait bir mutfak dili." data-en="Season-led plates. Long evenings. A culinary language of its own.">Mevsimle değişen tabaklar. Uzayan akşamlar. Kendine ait bir mutfak dili.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+905321732848" data-tr="Rezervasyon Yap" data-en="Reserve a Table">Rezervasyon Yap</a>
+            <a class="btn btn-ghost" href="#menu" data-tr="Menüyü Keşfet" data-en="Explore the Menu">Menüyü Keşfet</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-mark" data-tr="Aşağı kaydır" data-en="Scroll">Aşağı kaydır</div>
+    </section>
+
+    <section class="section section-light" id="hikaye">
+      <div class="section-head reveal">
+        <div class="kicker" data-tr="Zaaf'ın hikâyesi" data-en="The story of Zaaf">Zaaf'ın hikâyesi</div>
+        <div>
+          <h2 class="display" data-tr="Tanıdık tatlara, kişisel bir yorum." data-en="Familiar flavours, made personal.">Tanıdık tatlara, kişisel bir yorum.</h2>
+          <p class="bodycopy" data-tr="Zaaf, Şef Aras Çetin’in mevsimle birlikte değişen mutfak dili etrafında şekillenen küçük bir şef restoranı. İyi malzeme, açık ateş, sezgi ve sofrada uzun kalma isteği aynı akşamda buluşuyor." data-en="Zaaf is an intimate chef-led restaurant shaped by Chef Aras Çetin’s ever-evolving, seasonal cooking. Good produce, open fire, instinct and the pleasure of lingering at the table come together in one evening.">Zaaf, Şef Aras Çetin’in mevsimle birlikte değişen mutfak dili etrafında şekillenen küçük bir şef restoranı. İyi malzeme, açık ateş, sezgi ve sofrada uzun kalma isteği aynı akşamda buluşuyor.</p>
+        </div>
+      </div>
+
+      <div class="story-grid reveal">
+        <div class="story-photo"><img src="assets/fish.jpg" loading="lazy" decoding="async" alt="Zaaf mutfağından mevsimsel bir tabak"></div>
+        <div class="story-text">
+          <div class="num">01 / 03</div>
+          <div>
+            <h3 data-tr="Menü sabit değil. Zaaf da değil." data-en="The menu never stands still. Neither does Zaaf.">Menü sabit değil. Zaaf da değil.</h3>
+            <p data-tr="Mevsim değiştikçe malzeme, tabak ve hikâye de değişiyor. Bazı Zaaf klasikleri geri dönüyor; bazıları yerini o dönemin fikrine bırakıyor." data-en="As the seasons change, so do the ingredients, plates and stories. Some Zaaf signatures return; others make room for what feels right now.">Mevsim değiştikçe malzeme, tabak ve hikâye de değişiyor. Bazı Zaaf klasikleri geri dönüyor; bazıları yerini o dönemin fikrine bırakıyor.</p>
+          </div>
+          <div class="story-bottom"><span data-tr="Çağdaş Türk Mutfağı" data-en="Contemporary Turkish">Çağdaş Türk Mutfağı</span><span data-tr="Mevsimsel Menü" data-en="Seasonal Menu">Mevsimsel Menü</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="menu">
+      <div class="menu-intro reveal">
+        <div>
+          <div class="kicker" data-tr="Mevsimsel seçki" data-en="Seasonal selection">Mevsimsel seçki</div>
+          <h2 class="display" style="margin-top:20px" data-tr="Zaaf klasiklerinden." data-en="Zaaf signatures.">Zaaf klasiklerinden.</h2>
+        </div>
+        <p class="menu-note" data-tr="Bazı tabaklar menüden gider. Bazıları geri gelir. Birkaçı ise artık Zaaf’ın hafızasının parçasıdır." data-en="Some plates leave. Some return. A few become part of Zaaf’s memory.">Bazı tabaklar menüden gider. Bazıları geri gelir. Birkaçı ise artık Zaaf’ın hafızasının parçasıdır.</p>
+      </div>
+
+      <div class="menu-list reveal">
+        <div class="menu-row">
+          <div class="idx">01</div>
+          <h3 data-tr="Trüflü Ballı Çıtır Börek" data-en="Crispy Pastry · Truffle & Honey">Trüflü Ballı Çıtır Börek</h3>
+          <p data-tr="Tatlı, tuzlu ve aromatik dengenin Zaaf yorumlarından biri." data-en="One of Zaaf’s signatures built around a sweet, savoury and aromatic balance.">Tatlı, tuzlu ve aromatik dengenin Zaaf yorumlarından biri.</p>
+        </div>
+        <div class="menu-row">
+          <div class="idx">02</div>
+          <h3 data-tr="Dağınık Lazanya" data-en="Messy Lasagna">Dağınık Lazanya</h3>
+          <p data-tr="El yapımı makarna, yoğun bolonez ve parmesan dokunuşları." data-en="Handmade pasta, a rich bolognese and parmesan notes.">El yapımı makarna, yoğun bolonez ve parmesan dokunuşları.</p>
+        </div>
+        <div class="menu-row">
+          <div class="idx">03</div>
+          <h3>Roastbeef</h3>
+          <p data-tr="Zaaf’ın dönem dönem geri dönen, güçlü ve tanıdık tabaklarından." data-en="A bold, familiar Zaaf favourite that returns from season to season.">Zaaf’ın dönem dönem geri dönen, güçlü ve tanıdık tabaklarından.</p>
+        </div>
+      </div>
+      <div class="menu-footer reveal"><span data-tr="Güncel menü ve alerjen bilgileri için rezervasyon sırasında ekibe danışabilirsiniz." data-en="Ask the team about the current menu and allergen information when reserving.">Güncel menü ve alerjen bilgileri için rezervasyon sırasında ekibe danışabilirsiniz.</span><span data-tr="Menü mevsimsel olarak değişir." data-en="Menu changes seasonally.">Menü mevsimsel olarak değişir.</span></div>
+    </section>
+
+    <section class="image-band">
+      <img src="assets/interior-night.jpg" loading="lazy" decoding="async" alt="Zaaf İstanbul akşam atmosferi">
+      <div class="band-copy reveal">
+        <h2 data-tr="İyi yemek. Doğru ışık. Uzun bir akşam." data-en="Good food. The right light. A long evening.">İyi yemek. Doğru ışık. Uzun bir akşam.</h2>
+        <p data-tr="Beyaz örtülü masalar, loş ışık ve küçük bir salon. Zaaf’ta mekân, tabağın önüne geçmeden akşamın ritmini tamamlar." data-en="White tablecloths, warm light and an intimate room. At Zaaf, the space completes the evening without competing with the plate.">Beyaz örtülü masalar, loş ışık ve küçük bir salon. Zaaf’ta mekân, tabağın önüne geçmeden akşamın ritmini tamamlar.</p>
+      </div>
+    </section>
+
+    <section class="section section-light" id="sef">
+      <div class="chef-grid reveal">
+        <div class="chef-photo"><img src="assets/chef.jpg" loading="lazy" decoding="async" alt="Şef Aras Çetin"></div>
+        <div class="chef-copy">
+          <div class="signature" data-tr="Kurucu & Executive Şef" data-en="Founder & Executive Chef">Kurucu & Executive Şef</div>
+          <h2>Aras Çetin</h2>
+          <p data-tr="Zaaf’ın mutfağı trendlerden çok sezgiye, hafızaya ve malzemeye dayanıyor. Tanıdık bir lezzeti alıp onu başka bir açıdan anlatmak; tekniği görünür kılmadan tabağın karakterini güçlendirmek mutfağın temel yaklaşımı." data-en="Zaaf’s kitchen is driven less by trends than by instinct, memory and ingredients. The idea is to take something familiar, tell it from another angle and let technique strengthen the plate without taking over.">Zaaf’ın mutfağı trendlerden çok sezgiye, hafızaya ve malzemeye dayanıyor. Tanıdık bir lezzeti alıp onu başka bir açıdan anlatmak; tekniği görünür kılmadan tabağın karakterini güçlendirmek mutfağın temel yaklaşımı.</p>
+          <div class="chef-meta">
+            <div><strong>2018</strong><span data-tr="Galata · başlangıç" data-en="Galata · the beginning">Galata · başlangıç</span></div>
+            <div><strong>2020</strong><span data-tr="Levazım · yeni ev" data-en="Levazım · a new home">Levazım · yeni ev</span></div>
+            <div><strong>12+</strong><span data-tr="Misafir yaş politikası" data-en="Guest age policy">Misafir yaş politikası</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-brown" id="mekan">
+      <div class="gallery-head reveal">
+        <div>
+          <div class="kicker" data-tr="Zaaf akşamları" data-en="Evenings at Zaaf">Zaaf akşamları</div>
+          <h2 class="display" style="margin-top:18px" data-tr="Masadan kalan." data-en="What stays with you.">Masadan kalan.</h2>
+        </div>
+        <p data-tr="Mutfak, servis, içki ve mekân aynı akşamın parçaları. Bazen geriye bir tabak, bazen bir kadeh, bazen de yalnızca o masada geçen zaman kalır." data-en="Kitchen, service, drinks and space belong to the same evening. Sometimes what remains is a plate, sometimes a glass, sometimes simply the time spent at the table.">Mutfak, servis, içki ve mekân aynı akşamın parçaları. Bazen geriye bir tabak, bazen bir kadeh, bazen de yalnızca o masada geçen zaman kalır.</p>
+      </div>
+      <div class="gallery reveal">
+        <figure><img src="assets/plate.jpg" loading="lazy" decoding="async" alt="Zaaf servis anı"></figure>
+        <figure><img src="assets/hero-table.jpg" loading="lazy" decoding="async" alt="Zaaf masa detayı"></figure>
+        <figure><img src="assets/cocktail.jpg" loading="lazy" decoding="async" alt="Zaaf kokteyl"></figure>
+        <figure><img src="assets/candle.jpg" loading="lazy" decoding="async" alt="Zaaf iç mekân detayı"></figure>
+        <figure><img src="assets/pastry.jpg" loading="lazy" decoding="async" alt="Zaaf mutfağından bir tabak"></figure>
+      </div>
+    </section>
+
+    <section class="visit section-dark" id="rezervasyon">
+      <div class="visit-copy">
+        <div>
+          <div class="kicker" data-tr="Bir akşam ayırın" data-en="Make an evening of it">Bir akşam ayırın</div>
+          <h2 style="margin-top:22px" data-tr="Masada buluşalım." data-en="See you at the table.">Masada buluşalım.</h2>
+        </div>
+        <div>
+          <div class="visit-details">
+            <div><div class="detail-label" data-tr="Rezervasyon" data-en="Reservations">Rezervasyon</div><div class="detail-value">0532 173 28 48</div></div>
+            <div><div class="detail-label" data-tr="Çalışma saatleri" data-en="Opening hours">Çalışma saatleri</div><div class="detail-value" data-tr="Salı–Cumartesi 18:00–00:00<br>Pazar 16:00–22:00 · Pazartesi kapalı" data-en="Tue–Sat 18:00–00:00<br>Sun 16:00–22:00 · Closed Monday">Salı–Cumartesi 18:00–00:00<br>Pazar 16:00–22:00 · Pazartesi kapalı</div></div>
+            <div><div class="detail-label" data-tr="Adres" data-en="Address">Adres</div><div class="detail-value">Mecidiye, Ambarlıdere Sk. No:17/A<br>Beşiktaş · İstanbul</div></div>
+          </div>
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="tel:+905321732848" data-tr="Rezervasyon için ara" data-en="Call to Reserve">Rezervasyon için ara</a>
+            <a class="btn btn-ghost" href="https://maps.app.goo.gl/dCN1B9urJWnBP3TWA" target="_blank" rel="noopener" data-tr="Yol Tarifi" data-en="Directions">Yol Tarifi</a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/zaaf.istanbul/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="visit-image"><img src="assets/soul.jpg" loading="lazy" decoding="async" alt="Zaaf İstanbul giriş"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-left"><img class="footer-mark" src="assets/zaaf-mark.png" alt=""><small data-tr="Zaaf İstanbul için bağımsız olarak hazırlanmış sunum amaçlı konsept çalışmadır; resmi web sitesi değildir. Görseller Zaaf’ın kamuya açık Instagram içeriklerinden, kullanıcı tarafından sağlanan ekran görüntüleri üzerinden referans alınmıştır." data-en="An independent presentation concept for Zaaf İstanbul; this is not the official website. Visual references are based on Zaaf’s publicly visible Instagram content supplied as screenshots by the user.">Zaaf İstanbul için bağımsız olarak hazırlanmış sunum amaçlı konsept çalışmadır; resmi web sitesi değildir. Görseller Zaaf’ın kamuya açık Instagram içeriklerinden, kullanıcı tarafından sağlanan ekran görüntüleri üzerinden referans alınmıştır.</small></div>
+    <a class="social" href="https://www.instagram.com/zaaf.istanbul/" target="_blank" rel="noopener">@zaaf.istanbul ↗</a>
+  </footer>
+
+  <a class="mobile-reserve" href="tel:+905321732848" data-tr="Rezervasyon · 0532 173 28 48" data-en="Reserve · +90 532 173 28 48">Rezervasyon · 0532 173 28 48</a>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const header = document.querySelector('.nav');
+      const nav = document.getElementById('navLinks');
+      const toggle = document.getElementById('menuToggle');
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }));
+
+      const langBtns = [...document.querySelectorAll('.lang')];
+      function setLang(lang){
+        root.lang = lang;
+        document.querySelectorAll('[data-tr][data-en]').forEach(el => {
+          const html = el.getAttribute('data-' + lang);
+          if(html !== null) el.innerHTML = html;
+        });
+        langBtns.forEach(b => { const active = b.dataset.lang === lang; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active)); });
+      }
+      langBtns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+      setLang('tr');
+
+      const syncHeader = () => header.classList.toggle('scrolled', window.scrollY > 36);
+      syncHeader();
+      window.addEventListener('scroll', syncHeader, {passive:true});
+
+      const items = [...document.querySelectorAll('.reveal')];
+      if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const io = new IntersectionObserver(entries => entries.forEach(e => {
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        }), {threshold:.12});
+        items.forEach(el => io.observe(el));
+      } else { items.forEach(el => el.classList.add('in')); }
+    })();
+  </script>
+</body>
+</html>
